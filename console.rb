@@ -40,7 +40,12 @@ album1.update()
 album2.title = 'New title 2'
 album2.update()
 
+my_album = album1.find()
+my_artist = artist1.find()
+
+# MUST DO THESE AT THE VERY END
 artist1.delete()
+album2.delete()
 
 binding.pry()
 nil

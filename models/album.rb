@@ -33,6 +33,12 @@
       return Artist.new(result[0])
     end
 
+    def find()
+      sql = "SELECT * from albums WHERE id = #{@id};"
+      result = SqlRunner.run(sql)
+      return Album.new(result[0])
+    end
+
     def self.all()
       sql = "SELECT * from albums;"
       result = SqlRunner.run(sql)
