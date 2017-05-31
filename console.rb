@@ -40,5 +40,7 @@ album1.update()
 album2.title = 'New title 2'
 album2.update()
 
+artist1.delete()
+
 binding.pry()
 nil
