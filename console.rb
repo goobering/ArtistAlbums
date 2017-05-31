@@ -31,5 +31,8 @@ album2 = Album.new({
 album1.save()
 album2.save()
 
+artist1.name = 'New name'
+artist1.update()
+
 binding.pry()
 nil
