@@ -2,7 +2,7 @@
 
   class Album
 
-    attr_reader :title, :genre
+    attr_accessor :title, :genre
 
     def initialize(options)
       @id = options['id'].to_i() if options['id']
@@ -23,7 +23,7 @@
     end
 
     def update()
-      sql = "UPDATE albums SET (artist_id, title, genre) = ('#{artist_id}', '#{@title}', '#{@genre}') WHERE id = #{@id};"
+      sql = "UPDATE albums SET (artist_id, title, genre) = ('#{@artist_id}', '#{@title}', '#{@genre}') WHERE id = #{@id};"
       SqlRunner.run(sql)
     end
 
