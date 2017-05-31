@@ -8,10 +8,11 @@
       @id = options['id'].to_i() if options['id']
       @title = options['title']
       @genre = options['genre']
+      @artist_id = options['artist_id'].to_i()
     end
 
     def save()
-      sql = "INSERT INTO albums (title, genre) VALUES ('#{@title}', '#{@genre}') RETURNING *;"
+      sql = "INSERT INTO albums (artist_id, title, genre) VALUES ('#{@artist_id}', '#{@title}', '#{@genre}') RETURNING *;"
       result = SqlRunner.run(sql)
       @id = result[0]['id'].to_i()
     end
@@ -22,8 +23,14 @@
     end
 
     def update()
-      sql = "UPDATE albums SET (title, genre) = ('#{@title}', '#{@genre}') WHERE id = #{@id};"
+      sql = "UPDATE albums SET (artist_id, title, genre) = ('#{artist_id}', '#{@title}', '#{@genre}') WHERE id = #{@id};"
       SqlRunner.run(sql)
+    end
+
+    def artist()
+      sql = "SELECT * FROM artists WHERE id = #{@artist_id};"
+      result = SqlRunner.run(sql)
+      return Artist.new(result[0])
     end
 
     def self.all()
